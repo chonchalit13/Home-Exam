@@ -1,5 +1,6 @@
 package th.co.toei.homeexam.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -9,7 +10,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import th.co.toei.homeexam.R
 import th.co.toei.homeexam.alert.AlertMessageDialogFragment
 import th.co.toei.homeexam.base.BaseActivity
+import th.co.toei.homeexam.detail.DetailActivity
 import th.co.toei.homeexam.main.adapter.MainActivityAdapter
+import th.co.toei.homeexam.model.PhotoListModel
 
 class MainActivity : BaseActivity() {
 
@@ -55,9 +58,19 @@ class MainActivity : BaseActivity() {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
             adapter = mainActivityAdapter
         }
+
+        mainActivityAdapter.setOnItemClickListener(object :
+            MainActivityAdapter.OnItemClickListener {
+            override fun onItemClick(item: PhotoListModel) {
+                val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                intent.putExtra(PHOTO_DETAIL, item)
+                startActivity(intent)
+            }
+        })
     }
 
     companion object {
-        private const val TAG = "MainActivity"
+        const val TAG = "MainActivity"
+        const val PHOTO_DETAIL = "PHOTO_DETAIL"
     }
 }

@@ -1,7 +1,10 @@
 package th.co.toei.homeexam.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class PhotoListModel(
     @SerializedName("albumId")
     val albumId: Int = 0,
@@ -17,4 +20,4 @@ data class PhotoListModel(
 
     @SerializedName("url")
     val url: String = ""
-)
+) : Parcelable

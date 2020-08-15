@@ -1,8 +1,6 @@
 package th.co.toei.homeexam.alert
 
-import android.graphics.Color
 import android.graphics.Point
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment

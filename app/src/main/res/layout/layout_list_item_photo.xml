@@ -31,4 +31,13 @@
         app:layout_constraintStart_toStartOf="@+id/imv_thumbnail"
         tool:text="mock image" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toTopOf="@+id/imv_thumbnail"
+        app:layout_constraintStart_toStartOf="@+id/imv_thumbnail"
+        app:layout_constraintEnd_toEndOf="@+id/imv_thumbnail"
+        app:layout_constraintBottom_toBottomOf="@+id/imv_thumbnail"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
