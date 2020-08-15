@@ -3,8 +3,10 @@ package th.co.toei.homeexam.usecase
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.*
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import okhttp3.internal.EMPTY_RESPONSE
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -112,5 +114,10 @@ class GetPhotosListUseCaseTest {
                 }
             }
         }
+    }
+
+    @After
+    fun testDown() {
+        Dispatchers.resetMain()
     }
 }
