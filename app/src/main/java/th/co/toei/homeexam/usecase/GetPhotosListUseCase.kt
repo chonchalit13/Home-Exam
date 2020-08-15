@@ -7,17 +7,15 @@ import th.co.toei.homeexam.model.Result
 class GetPhotosListUseCase(private val mainActivityRepositoryImpl: MainActivityRepositoryImpl) :
     CoroutinesUseCase<Unit, MutableList<PhotoListModel>>() {
     override suspend fun execute(parameter: Unit): Result<MutableList<PhotoListModel>> {
-        try {
+        return try {
             val response = mainActivityRepositoryImpl.getPhotosList()
             if (response.code() == 200 && response.body() != null) {
-                response.body()?.let {
-                    return Result.Success(it)
-                } ?: return Result.Error("Error response null")
+                Result.Success(response.body() ?: mutableListOf())
             } else {
-                return Result.Error("Error code ${response.code()}")
+                Result.Error("Error code ${response.code()}")
             }
         } catch (e: Exception) {
-            return Result.Error(e.message ?: "Error GetPhotosListUseCase")
+            Result.Error(e.message ?: "Error GetPhotosListUseCase")
         }
     }
 }

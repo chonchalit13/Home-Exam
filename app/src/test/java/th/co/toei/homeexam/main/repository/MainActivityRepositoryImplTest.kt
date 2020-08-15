@@ -38,17 +38,17 @@ class MainActivityRepositoryImplTest {
 
     @Test
     fun getPhotosListSuccess() {
-        val response: MutableList<PhotoListModel> = mutableListOf(
-            PhotoListModel(
-                1,
-                1,
-                "https://via.placeholder.com/150/92c952",
-                "Test",
-                "https://via.placeholder.com/600/92c952"
-            )
-        )
-
         runBlocking {
+            val response: MutableList<PhotoListModel> = mutableListOf(
+                PhotoListModel(
+                    1,
+                    1,
+                    "https://via.placeholder.com/150/92c952",
+                    "Test",
+                    "https://via.placeholder.com/600/92c952"
+                )
+            )
+
             Mockito.`when`(mainActivityRepositoryImpl.getPhotosList())
                 .thenReturn(Response.success(response))
 

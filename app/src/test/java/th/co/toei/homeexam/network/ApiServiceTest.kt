@@ -41,7 +41,7 @@ class ApiServiceTest {
     }
 
     @Test
-    fun callServiceSuccess() {
+    fun callService() {
         runBlocking {
             val call = mService.getPhotosList()
             assertEquals(200, call.code())
