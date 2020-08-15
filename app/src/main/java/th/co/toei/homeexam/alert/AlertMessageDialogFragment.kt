@@ -53,7 +53,7 @@ class AlertMessageDialogFragment : DialogFragment() {
 
             val width = size.x
 
-            it.setLayout((width * 0.7).toInt(), WindowManager.LayoutParams.WRAP_CONTENT)
+            it.setLayout((width * 0.9).toInt(), WindowManager.LayoutParams.WRAP_CONTENT)
             it.setGravity(Gravity.CENTER)
         }
     }

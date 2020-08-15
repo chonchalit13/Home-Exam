@@ -62,8 +62,9 @@ class MainActivity : BaseActivity() {
         mainActivityAdapter.setOnItemClickListener(object :
             MainActivityAdapter.OnItemClickListener {
             override fun onItemClick(item: PhotoListModel) {
-                val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                intent.putExtra(PHOTO_DETAIL, item)
+                val intent = Intent(this@MainActivity, DetailActivity::class.java).also {
+                    it.putExtra(PHOTO_DETAIL, item)
+                }
                 startActivity(intent)
             }
         })
