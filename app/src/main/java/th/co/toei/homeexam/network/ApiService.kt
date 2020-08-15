@@ -8,16 +8,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ApiService {
-    private val gson = Gson().newBuilder()
+    val gson = Gson().newBuilder()
         .setLenient()
         .setPrettyPrinting()
         .create()
 
-    private val logginInterceptor = HttpLoggingInterceptor().apply {
+    val logginInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
-    private val okHttp = OkHttpClient.Builder()
+    val okHttp = OkHttpClient.Builder()
         .connectTimeout(60L, TimeUnit.SECONDS)
         .readTimeout(60L, TimeUnit.SECONDS)
         .writeTimeout(60L, TimeUnit.SECONDS)
