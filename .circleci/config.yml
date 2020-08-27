@@ -2,7 +2,7 @@ __andriod:
   android_container_config: &android_container_config
     working_directory: ~/HomeExam
     docker:
-      - image: chonchalit/android-sdk-build:1.0.0
+      - image: chonchalit/android-sdk-build:1.0.1
   
   update_apt: &update_apt
     name: update apt
