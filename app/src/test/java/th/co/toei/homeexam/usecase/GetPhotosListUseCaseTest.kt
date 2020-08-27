@@ -14,7 +14,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import retrofit2.Response
-import th.co.toei.homeexam.main.repository.MainActivityRepositoryImpl
+import th.co.toei.homeexam.repository.MainRepositoryImpl
 import th.co.toei.homeexam.model.PhotoListModel
 import th.co.toei.homeexam.model.Result
 import th.co.toei.homeexam.network.EndpointInterface
@@ -29,14 +29,14 @@ class GetPhotosListUseCaseTest {
     @Mock
     lateinit var mService: EndpointInterface
 
-    lateinit var mainActivityRepositoryImpl: MainActivityRepositoryImpl
+    lateinit var mainActivityRepositoryImpl: MainRepositoryImpl
 
     lateinit var getPhotosListUseCase: GetPhotosListUseCase
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mainActivityRepositoryImpl = MainActivityRepositoryImpl(mService)
+        mainActivityRepositoryImpl = MainRepositoryImpl(mService)
         getPhotosListUseCase = GetPhotosListUseCase(mainActivityRepositoryImpl)
         Dispatchers.setMain(newSingleThreadContext("UI Thread"))
     }
@@ -61,9 +61,6 @@ class GetPhotosListUseCaseTest {
                 is Result.Success -> {
                     assertNotNull(result.data)
                 }
-                is Result.Error -> {
-                    assertNotNull(result.exception)
-                }
             }
         }
     }
@@ -75,9 +72,6 @@ class GetPhotosListUseCaseTest {
                 .thenReturn(Response.error(500, EMPTY_RESPONSE))
 
             when (val result = getPhotosListUseCase.execute(Unit)) {
-                is Result.Success -> {
-                    assertNotNull(result.data)
-                }
                 is Result.Error -> {
                     assertNotNull(result.exception)
                 }
@@ -92,9 +86,6 @@ class GetPhotosListUseCaseTest {
                 .thenReturn(Response.error(500, EMPTY_RESPONSE))
 
             when (val result = getPhotosListUseCase.execute(Unit)) {
-                is Result.Success -> {
-                    assertNotNull(result.data)
-                }
                 is Result.Error -> {
                     assertNotNull(result.exception)
                 }
@@ -106,9 +97,6 @@ class GetPhotosListUseCaseTest {
     fun getPhotoListUseCaseCatch() {
         runBlocking {
             when (val result = getPhotosListUseCase.execute(Unit)) {
-                is Result.Success -> {
-                    assertNotNull(result.data)
-                }
                 is Result.Error -> {
                     assertNotNull(result.exception)
                 }

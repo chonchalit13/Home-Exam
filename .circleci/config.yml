@@ -1,0 +1,59 @@
+__andriod:
+  android_container_config: &android_container_config
+    working_directory: ~/HomeExam
+    docker:
+      - image: mingc/android-build-box:1.13.0
+  
+  update_apt: &update_apt
+    name: update apt
+    command:
+      apt-get update
+
+  install_bc: &install_bc
+    name: install bc
+    command:
+      apt-get install bc
+
+version: 2
+jobs:
+  run-test-android:
+    <<: *android_container_config
+    steps:
+      - checkout
+
+      - run:
+        name: "Setup Custom variables"
+        command: |
+          REPORTS_PATH="app/build/jacoco"
+          echo "export REPORTS_PATH=$REPORTS_PATH" >> $BASH_ENV
+
+      - run: *update_apt
+      - run: *install_bc
+
+      - run:
+          name: Run unit test HomeExam
+          command: |
+            ./gradlew jacocoTestReport
+
+      - run:
+          name: Get coverage unit test
+          command: |
+            cd app/build/jacoco
+            TOTAL_SUM="$(awk -F"," '{ instructions += $4 + $5; covered += $5 } END { print 100*covered/instructions }' jacoco.csv)"
+            COVERAGE_SUM=`echo "scale=2; $TOTAL_SUM/1" | bc`
+            echo "export COVERAGE_SUM=$COVERAGE_SUM" >> $BASH_ENV
+
+      - run:
+          name: Creating Dummy Artifacts
+          command: |
+            mkdir -p output
+            cp -R $REPORTS_PATH output
+      
+      - store_artifacts:
+          path: output
+
+workflows:
+    version: 2
+    build-and-deploy:
+      jobs:
+        - run-test-android

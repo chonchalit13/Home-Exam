@@ -1,4 +1,4 @@
-package th.co.toei.homeexam.main
+package th.co.toei.homeexam.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

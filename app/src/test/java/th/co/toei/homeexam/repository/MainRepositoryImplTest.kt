@@ -1,4 +1,4 @@
-package th.co.toei.homeexam.main.repository
+package th.co.toei.homeexam.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import junit.framework.Assert.assertEquals
@@ -20,19 +20,19 @@ import th.co.toei.homeexam.network.EndpointInterface
 
 @ObsoleteCoroutinesApi
 @ExperimentalCoroutinesApi
-class MainActivityRepositoryImplTest {
+class MainRepositoryImplTest {
     @get:Rule
     val rule = InstantTaskExecutorRule()
 
     @Mock
     lateinit var mService: EndpointInterface
 
-    lateinit var mainActivityRepositoryImpl: MainActivityRepositoryImpl
+    lateinit var mainActivityRepositoryImpl: MainRepositoryImpl
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mainActivityRepositoryImpl = MainActivityRepositoryImpl(mService)
+        mainActivityRepositoryImpl = MainRepositoryImpl(mService)
         Dispatchers.setMain(newSingleThreadContext("UI Thread"))
     }
 

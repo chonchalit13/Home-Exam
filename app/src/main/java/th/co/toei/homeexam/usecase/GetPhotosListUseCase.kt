@@ -1,10 +1,10 @@
 package th.co.toei.homeexam.usecase
 
-import th.co.toei.homeexam.main.repository.MainActivityRepositoryImpl
+import th.co.toei.homeexam.repository.MainRepositoryImpl
 import th.co.toei.homeexam.model.PhotoListModel
 import th.co.toei.homeexam.model.Result
 
-class GetPhotosListUseCase(private val mainActivityRepositoryImpl: MainActivityRepositoryImpl) :
+class GetPhotosListUseCase(private val mainActivityRepositoryImpl: MainRepositoryImpl) :
     CoroutinesUseCase<Unit, MutableList<PhotoListModel>>() {
     override suspend fun execute(parameter: Unit): Result<MutableList<PhotoListModel>> {
         return try {

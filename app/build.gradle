@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 30
@@ -77,4 +78,29 @@ dependencies {
     testImplementation 'androidx.test:core:1.2.0'
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     testImplementation("com.squareup.okhttp3:mockwebserver:4.8.1")
+
+    // Jacoco
+    jacocoAnt 'org.jacoco:org.jacoco.ant:0.8.5:nodeps'
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+}
+
+jacocoAndroidUnitTestReport {
+    excludes += ['**/AutoValue_*.*',
+                 '**/*JavascriptBridge.class',
+                 '**/models/*',
+                 '**/*Application*',
+                 '**/*Fragment*',
+                 '**/*Module*',
+                 '**/*Adapter*',
+                 'th/co/toei/homeexam/view/*']
+    csv.enabled true
+    html.enabled true
+    xml.enabled true
 }

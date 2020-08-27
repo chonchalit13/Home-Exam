@@ -1,8 +1,7 @@
-package th.co.toei.homeexam.main
+package th.co.toei.homeexam.view.main
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -10,9 +9,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import th.co.toei.homeexam.R
 import th.co.toei.homeexam.alert.AlertMessageDialogFragment
 import th.co.toei.homeexam.base.BaseActivity
-import th.co.toei.homeexam.detail.DetailActivity
-import th.co.toei.homeexam.main.adapter.MainActivityAdapter
+import th.co.toei.homeexam.view.detail.DetailActivity
+import th.co.toei.homeexam.view.main.adapter.MainActivityAdapter
 import th.co.toei.homeexam.model.PhotoListModel
+import th.co.toei.homeexam.viewmodel.MainActivityViewModel
 
 class MainActivity : BaseActivity() {
 

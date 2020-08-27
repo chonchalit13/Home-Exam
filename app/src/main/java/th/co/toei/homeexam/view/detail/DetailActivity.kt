@@ -1,4 +1,4 @@
-package th.co.toei.homeexam.detail
+package th.co.toei.homeexam.view.detail
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -16,7 +16,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.activity_detail.*
 import th.co.toei.homeexam.R
-import th.co.toei.homeexam.main.MainActivity
+import th.co.toei.homeexam.view.main.MainActivity
 import th.co.toei.homeexam.model.PhotoListModel
 
 class DetailActivity : AppCompatActivity() {

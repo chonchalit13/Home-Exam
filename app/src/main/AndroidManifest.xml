@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".detail.DetailActivity" />
-        <activity android:name=".main.MainActivity">
+        <activity android:name="th.co.toei.homeexam.view.detail.DetailActivity" />
+        <activity android:name="th.co.toei.homeexam.view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package th.co.toei.homeexam.main
+package th.co.toei.homeexam.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import junit.framework.Assert.assertEquals
@@ -33,7 +33,10 @@ class MainActivityViewModelTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mainActivityViewModel = MainActivityViewModel(getPhotosListUseCase)
+        mainActivityViewModel =
+            MainActivityViewModel(
+                getPhotosListUseCase
+            )
         Dispatchers.setMain(newSingleThreadContext("UI Thread"))
     }
 

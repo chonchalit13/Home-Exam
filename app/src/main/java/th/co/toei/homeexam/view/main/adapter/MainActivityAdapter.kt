@@ -1,4 +1,4 @@
-package th.co.toei.homeexam.main.adapter
+package th.co.toei.homeexam.view.main.adapter
 
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.layout_list_item_photo.view.*
 import th.co.toei.homeexam.R
-import th.co.toei.homeexam.main.MainActivity
+import th.co.toei.homeexam.view.main.MainActivity
 import th.co.toei.homeexam.model.PhotoListModel
 
 class MainActivityAdapter : RecyclerView.Adapter<MainActivityAdapter.ViewHolder>() {
