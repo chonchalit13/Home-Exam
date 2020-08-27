@@ -2,7 +2,7 @@ __andriod:
   android_container_config: &android_container_config
     working_directory: ~/HomeExam
     docker:
-      - image: mingc/android-build-box:1.13.0
+      - image: chonchalit/android-sdk-build:1.0.0
   
   update_apt: &update_apt
     name: update apt
@@ -20,8 +20,6 @@ jobs:
     <<: *android_container_config
     steps:
       - checkout
-      - setup_remote_docker: 
-          docker_layer_caching: true
 
       - run:
           name: "Setup Custom variables"
